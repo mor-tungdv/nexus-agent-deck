@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#e7eaef"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#e7eaef"/><rect x="15" y="30" width="70" height="40" rx="6" fill="#ffffff" stroke="#1c3454" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="#8aa6cf"/></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>html,body{margin:0;padding:0;background:#e7eaef;overflow:hidden}</style>
+<script>(function(){function fit(){var el=document.getElementById('cs-art');if(!el)return;var s=Math.min(window.innerWidth/1920,window.innerHeight/1080);el.style.transform='scale('+s+')';}window.addEventListener('resize',fit);window.addEventListener('load',fit);setTimeout(fit,0);setTimeout(fit,400);setTimeout(fit,1200);})();</script>
+</helmet>
+<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#e7eaef;overflow:hidden;">
+  <div id="cs-art" style="position:relative;width:1920px;height:1080px;flex:none;overflow:hidden;">
+    <x-import component-from-global-scope="WikiStatic" from="./wiki-static.jsx" theme="light" hint-size="1920px,1080px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

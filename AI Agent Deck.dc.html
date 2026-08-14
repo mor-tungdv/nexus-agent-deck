@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#5980a6"/><text x="30%" y="55%" font-family="sans-serif" font-size="64" fill="#f2f2f3">N</text></svg></template>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./_ds/industry-20f39a08-3061-48e6-a859-56db016d2655/styles.css">
+<script src="./_ds/industry-20f39a08-3061-48e6-a859-56db016d2655/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap">
+<script src="./image-slot.js"></script>
+<script>
+(function(){
+  function setup(){
+    var stage = document.querySelector('deck-stage');
+    if(!stage){ requestAnimationFrame(setup); return; }
+    stage.addEventListener('slidechange', function(e){
+      document.querySelectorAll('video[data-autoplay-slide]').forEach(function(v){
+        var slide = v.closest('section');
+        if(slide === e.detail.slide){
+          v.muted = true;
+          v.currentTime = 0;
+          var p = v.play();
+          if(p && p.catch) p.catch(function(){});
+        } else if(!v.paused || v.currentTime !== 0){
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+    });
+  }
+  setup();
+})();
+</script>
+<title>NexusBot — AI Agent Assistant PM</title>
+<style>
+deck-stage {
+  --type-display: 288px;
+  --type-title: 96px;
+  --type-subtitle: 40px;
+  --type-body: 34px;
+  --type-small: 28px;
+  --type-kicker: 30px;
+  --pad-x: 120px;
+  --page-foot-note: "Nội bộ — NexusBot";
+  --pad-top: 96px;
+  --pad-bottom: 120px;
+  --baseline: 48px;
+  --color-bg: #001A4D;
+  --color-text: #E7EEF7;
+  --color-divider: rgba(231, 238, 247, 0.2);
+  --color-accent: #4075FF;
+  --color-accent-100: #0F2A4D;
+  --color-accent-300: #163C6E;
+  --color-accent-400: #1B5DA0;
+  --color-accent-600: #3D8FD9;
+  --color-accent-700: #6FBBFF;
+  --color-accent-800: #9DD3FF;
+  --color-accent-900: #001030;
+}
+.slide { background: linear-gradient(135deg, #001A4D 0%, #0B2050 46%, #0D3B7A 100%) !important; }
+.slide.light-bg { background: #F4F7FC !important; --color-bg: #F4F7FC; --color-text: #0F2747; --color-divider: rgba(15,39,71,0.15); --color-accent: #001A4D; --color-accent-100: #E3E7F3; --color-accent-300: #DCE8F7; --color-accent-400: #9FB6D6; --color-accent-600: #16336E; --color-accent-700: #001A4D; --color-accent-800: #001030; --color-accent-900: #000B21; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+.slide {
+  display: flex; flex-direction: column; isolation: isolate;
+  background: var(--color-bg); color: var(--color-text);
+  font-family: var(--font-body); text-wrap: pretty;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.board {
+  --board-rule: color-mix(in srgb, var(--color-divider) 50%, transparent);
+  position: absolute; z-index: -1;
+  left: var(--pad-x); top: calc(2.5 * var(--baseline));
+  width: calc(1680px + 1px); height: calc(17.5 * var(--baseline) + 1px);
+  border: 1px solid var(--board-rule, var(--color-divider));
+  background-origin: border-box; background-clip: border-box;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, var(--board-rule, var(--color-divider)) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(to bottom, transparent 0 96px, var(--board-rule, var(--color-divider)) 96px 97px, transparent 97px 120px),
+    repeating-linear-gradient(to right, var(--board-rule, var(--color-divider)) 0 1px, transparent 1px 432px),
+    repeating-linear-gradient(to right, transparent 0 384px, var(--board-rule, var(--color-divider)) 384px 385px, transparent 385px 432px);
+}
+.kicker {
+  position: absolute; top: calc(2 * var(--baseline) - 1cap);
+  left: var(--pad-x); text-box: trim-both cap alphabetic;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 46px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  color: #3B6FE0; font-feature-settings: "tnum" 1;
+  display: flex; align-items: center; gap: 16px;
+}
+.kicker-num {
+  width: 48px; height: 48px; border-radius: 50%; border: 2px solid #3B6FE0;
+  display: flex; align-items: center; justify-content: center; flex: none;
+  font-size: 24px; letter-spacing: 0; text-box: none;
+}
+.k-right { left: auto; right: var(--pad-x); }
+.qslide, .qslide * { font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif; }
+.qslide .src { position:absolute; transform:translate(-50%,-50%); z-index:4; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.qslide .src-ic { width:104px; height:104px; border-radius:50%; background:#ffffff; border:2px solid #274a72; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 12px rgba(23,45,74,0.10); }
+.qslide .src-ic svg { width:46px; height:46px; stroke:#1c3454; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.qslide .src-lb { font-size:26px; font-weight:600; color:#1c3454; letter-spacing:0.2px; white-space:nowrap; }
+.qslide .frag { position:absolute; transform:translate(-50%,-50%); z-index:5; background:#ffffff; border:1px solid #c3cede; border-radius:7px; padding:8px 14px; font-size:24px; font-weight:600; color:#22456c; white-space:nowrap; box-shadow:0 2px 8px rgba(23,45,74,0.08); }
+.qslide .frag.q { border-color:#e2a173; color:#b5521c; border-style:dashed; }
+.qslide .warn { position:absolute; transform:translate(-50%,-50%); z-index:7; display:flex; flex-direction:column; align-items:center; gap:9px; }
+.qslide .warn-ic { width:92px; height:92px; border-radius:50%; background:#ffffff; border:2.5px solid #db6a2c; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(183,82,28,0.18); }
+.qslide .warn-ic svg { width:44px; height:44px; stroke:#c05a20; fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+.qslide .warn-lb { background:#fbe7d8; color:#a94c19; font-size:24px; font-weight:700; padding:5px 15px; border-radius:999px; white-space:nowrap; }
+.step-header {
+  position: absolute; top: calc(2 * var(--baseline) - 1cap); left: var(--pad-x); right: var(--pad-x);
+  display: flex; align-items: flex-start; gap: 36px;
+}
+.step-item { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+.step-item .dot { width: 40px; height: 6px; border-radius: 4px; background: var(--color-divider); }
+.step-item .label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 500;
+  letter-spacing: 0.02em; white-space: nowrap; color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+.step-item.done .dot { background: var(--color-accent); }
+.step-item.done .label { color: var(--color-accent); font-weight: 600; }
+.step-item.active .dot { background: #F6AD4E; }
+.step-item.active .label { color: #B8720B; font-weight: 700; }
+.slide-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: var(--type-title); line-height: calc(2 * var(--baseline)); letter-spacing: 0; margin: 0;
+  margin-left: -0.052em; text-box: trim-both cap alphabetic;
+}
+.pin-bottom { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: calc(var(--pad-bottom) + var(--baseline) / 2); }
+.meta { display: flex; align-items: baseline; gap: 18px; font-size: var(--type-kicker); color: color-mix(in srgb, var(--color-text) 55%, transparent); flex-wrap: nowrap; white-space: nowrap; }
+.meta span { text-box: trim-both cap alphabetic; white-space: nowrap; }
+deck-stage { counter-reset: page; }
+.slide { counter-increment: page; }
+.page-foot {
+  position: absolute; left: var(--pad-x); bottom: calc(var(--pad-bottom) + var(--baseline) / 2);
+  font-size: var(--type-kicker); color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  text-box: trim-both cap alphabetic;
+}
+.page-foot::before { content: counter(page) " · "; font-feature-settings: "tnum" 1; }
+.page-foot::after { content: var(--page-foot-note); }
+.cover { justify-content: flex-start; background: var(--color-accent-100); }
+.cover .rise { position: absolute; inset: 0 var(--pad-x); }
+.display {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: var(--type-display); line-height: calc(6 * var(--baseline)); letter-spacing: 0; margin: 0;
+  margin-left: -0.052em; margin-top: calc(12.5 * var(--baseline) - 1cap);
+  text-box: trim-both cap alphabetic;
+}
+.cover-sub { font-size: var(--type-small); line-height: var(--baseline); margin: 0;
+  position: absolute; left: 0; max-width: 1200px;
+  top: calc(14.5 * var(--baseline) - 1cap); text-box: trim-both cap alphabetic; }
+.content { padding-top: calc(5 * var(--baseline)); }
+.content > .slide-title { margin-top: -1cap; }
+.toc { position: absolute; inset: 0 var(--pad-x); font-size: var(--type-subtitle); }
+.toc-row { position: absolute; left: 0; right: 0; }
+.toc-row > span { text-box: trim-both cap alphabetic; position: absolute; top: 0; }
+.toc-num {
+  font-size: 26px; color: var(--color-accent); font-feature-settings: "tnum" 1;
+  width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--color-accent);
+  display: flex; align-items: center; justify-content: center;
+  text-box: none; top: 50% !important; transform: translateY(-50%);
+}
+.toc-row > .toc-label { left: 74px; white-space: nowrap; top: 50% !important; transform: translateY(-50%); text-box: none; }
+.toc-row:nth-child(1) { top: calc(8.5 * var(--baseline)); }
+.toc-row:nth-child(2) { top: calc(10.7 * var(--baseline)); }
+.toc-row:nth-child(3) { top: calc(12.9 * var(--baseline)); }
+.toc-row:nth-child(4) { top: calc(15.1 * var(--baseline)); }
+.toc-row:nth-child(5) { top: calc(17.3 * var(--baseline)); }
+.toc-row > span { top: calc(-1cap); }
+.problem { padding-top: calc(5 * var(--baseline)); }
+.problem > .slide-title { margin-top: -1cap; }
+.problem-sub { font-size: var(--type-small); line-height: var(--baseline); margin: calc(0.6 * var(--baseline) - 1cap) 0 0; max-width: 1500px; text-box: trim-both cap alphabetic; color: var(--color-text); }
+.problem-single { margin-top: calc(1 * var(--baseline)); width: 1680px; }
+.problem-photo { position: absolute; inset: 0 auto 0 0; width: 936px; margin: 0; }
+.problem.flip .problem-photo { inset: 0 0 0 auto; }
+.problem.half > .slide-title { margin-left: calc(864px - 0.052em); }
+.problem.half.flip > .slide-title { margin-left: 0; }
+.problem.half .kicker { left: 984px; }
+.problem.half.flip .kicker { left: var(--pad-x); }
+.problem.half .problem-single { margin-left: 864px; width: 816px; }
+.problem.half.flip .problem-single { margin-left: 0; width: 816px; }
+.problem-card { padding: 56px; display: flex; flex-direction: column; gap: 24px; background: #FFFFFF; color: #1d1f20; border-radius: 8px; }
+.num-row { position: relative; padding-left: 68px; margin-bottom: 28px; box-sizing: border-box; }
+.num-row:last-child { margin-bottom: 0; }
+.num-badge { position: absolute; left: 0; top: 0; width: 44px; height: 44px; border: 1px solid var(--color-accent-600); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; color: var(--color-accent-700); }
+.num-text { font-size: 28px; line-height: 1.4; margin: 0; }
+.num-text b { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.problem-card-label { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 36px; letter-spacing: 0.02em; color: var(--color-accent); margin: 0; }
+.problem-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 24px; }
+.problem-list li { position: relative; padding-left: 34px; font-size: 28px; line-height: 1.55; }
+.problem-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 12px; height: 12px; background: var(--color-accent); }
+.problem-insight { font-size: 24px; line-height: 1.35; font-style: italic; color: var(--color-text); margin: calc(0.4 * var(--baseline)) 0 0; max-width: 1680px; }
+.blueprint { position: relative; border: 1px solid var(--color-divider); }
+.blueprint > .corner { position: absolute; width: 11px; height: 11px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.blueprint > .corner::before, .blueprint > .corner::after { content: ""; position: absolute; background: currentColor; }
+.blueprint > .corner::before { left: 5px; top: 0; width: 1px; height: 100%; }
+.blueprint > .corner::after { top: 5px; left: 0; width: 100%; height: 1px; }
+.blueprint > .corner.tl { top: -6px; left: -6px; }
+.blueprint > .corner.tr { top: -6px; right: -6px; }
+.blueprint > .corner.bl { bottom: -6px; left: -6px; }
+.blueprint > .corner.br { bottom: -6px; right: -6px; }
+.cell { position: absolute; border: 1px solid var(--color-divider); pointer-events: none; }
+.cell > .corner, .board > .corner { position: absolute; width: 15px; height: 15px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.cell > .corner::before, .cell > .corner::after, .board > .corner::before, .board > .corner::after { content: ""; position: absolute; background: currentColor; }
+.cell > .corner::before, .board > .corner::before { left: 7px; top: 0; width: 1px; height: 100%; }
+.cell > .corner::after, .board > .corner::after { top: 7px; left: 0; width: 100%; height: 1px; }
+.cell > .corner.tl, .board > .corner.tl { top: -8px; left: -8px; }
+.cell > .corner.tr, .board > .corner.tr { top: -8px; right: -8px; }
+.cell > .corner.bl, .board > .corner.bl { bottom: -8px; left: -8px; }
+.cell > .corner.br, .board > .corner.br { bottom: -8px; right: -8px; }
+
+/* — LLM Wiki overview — */
+.solution { padding-top: calc(5 * var(--baseline)); }
+.solution > .slide-title { margin-top: -1cap; }
+.solution-body { display: flex; gap: 64px; margin-top: 48px; }
+.solution-col { flex: 1; display: flex; flex-direction: column; }
+.solution-label { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 20px; }
+.frame-outer { border: 2px solid var(--color-accent); padding: 44px 36px 36px; position: relative; }
+.frame-tag { position: absolute; top: -18px; left: 22px; background: var(--color-accent); color: var(--color-bg); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; letter-spacing: 0.02em; padding: 5px 16px; white-space: nowrap; }
+.frame-inner { border: 1px solid var(--color-divider); padding: 40px 26px 26px; position: relative; margin-top: 16px; }
+.frame-tag-inner { background: var(--color-bg); color: var(--color-accent); border: 1px solid var(--color-accent); }
+.vault-row { display: flex; gap: 22px; }
+.vault-card { flex: 1; border: 1px solid var(--color-divider); padding: 24px; background: #FFFFFF; color: #1d1f20; border-radius: 8px; }
+.vault-card b { display: block; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; line-height: 1.25; margin-bottom: 12px; }
+.vault-card span { font-size: 24px; line-height: 1.35; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.capabilities { display: flex; flex-direction: column; gap: 24px; }
+.capability { display: flex; align-items: flex-start; gap: 16px; font-size: 30px; line-height: 1.3; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.capability .dot { flex: none; width: 14px; height: 14px; margin-top: 10px; background: var(--color-accent); }
+.result-block { margin-top: 36px; }
+.result-tags { display: flex; gap: 14px; flex-wrap: wrap; }
+.result-tag { border: 2px solid var(--color-accent); border-radius: 8px; color: var(--color-accent-700); font-size: 26px; padding: 10px 20px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); white-space: nowrap; }
+.closing-banner { margin-top: 24px; border: 1px solid var(--color-accent); background: var(--color-accent-100); color: var(--color-accent-800); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 32px; text-align: center; padding: 18px; }
+
+/* — RAG vs LLM Wiki comparison — */
+.compare { padding-top: calc(5 * var(--baseline)); }
+.compare > .slide-title { margin-top: -1cap; }
+.flow-compare { display: flex; gap: 64px; margin-top: 40px; }
+.flow-col { flex: 1; display: flex; flex-direction: column; align-items: stretch; }
+.flow-node { border: 1px solid var(--color-divider); padding: 14px 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; line-height: 1.25; text-align: center; }
+.flow-node.hub { border: 2px solid var(--color-accent); color: var(--color-accent-700); }
+.flow-connector { width: 2px; height: 20px; background: var(--color-accent); margin: 0 auto; }
+.flow-caption { font-size: 24px; font-style: italic; color: color-mix(in srgb, var(--color-text) 70%, transparent); text-align: center; margin: 16px 0 0; }
+.branch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; margin-top: 20px; }
+.branch-row::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 2px; background: var(--color-accent); }
+.branch-box { position: relative; }
+.branch-box::before { content: ""; position: absolute; left: 50%; top: -20px; width: 2px; height: 20px; background: var(--color-accent); transform: translateX(-50%); }
+.branch-box::after { content: ""; position: absolute; left: 50%; bottom: -20px; width: 2px; height: 20px; background: var(--color-accent); transform: translateX(-50%); }
+.fan-in-bar { position: relative; height: 20px; margin-top: 14px; }
+.fan-in-bar::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--color-accent); }
+.branch-note { font-size: 24px; font-style: italic; color: var(--color-accent-700); text-align: center; margin: 10px 0 0; }
+.merge-strip { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+.merge-strip .flow-node { flex: 1; padding: 10px 10px; font-size: 24px; }
+.merge-arrow { flex: none; font-size: 26px; color: var(--color-accent); }
+.stats-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 24px; }
+.stat-card { border: 1px solid var(--color-divider); padding: 26px; }
+.stat-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 28px; color: var(--color-accent-700); margin: 0 0 12px; }
+.stat-card p { font-size: 24px; line-height: 1.35; margin: 0; }
+
+/* — NexusBot hub diagram — */
+.hub-wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+.hub-diagram { position: relative; width: 1680px; height: 700px; flex: none; }
+.hub-lines { position: absolute; left: 0; top: 0; width: 1680px; height: 700px; overflow: visible; }
+.hub-line { stroke: var(--color-accent); stroke-width: 2; }
+.hub-center { position: absolute; width: 220px; height: 130px; left: 730px; top: 298px; border: 2px solid var(--color-accent-600); border-radius: 12px; background: var(--color-bg); display: flex; align-items: center; justify-content: center; }
+.hub-center span { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 32px; color: var(--color-accent-700); }
+.hub-node { position: absolute; width: 160px; height: 160px; border-radius: 50%; border: 1px solid var(--color-accent-600); background: var(--color-bg); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 14px; box-sizing: border-box; }
+.hub-wrap.hub-contrast .hub-node, .hub-wrap.hub-contrast .hub-center { background: #F4F7FC; }
+.hub-wrap.hub-contrast .hub-center span { color: #1c3454; }
+.hub-wrap.hub-contrast .hub-node b { color: #1c3454; }
+.hub-node b { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; line-height: 1.15; }
+.hub-node.n1 { left: 760px; top: 13px; }
+.hub-node.n2 { left: 971px; top: 115px; }
+.hub-node.n3 { left: 1023px; top: 343px; }
+.hub-node.n4 { left: 877px; top: 526px; }
+.hub-node.n5 { left: 643px; top: 526px; }
+.hub-node.n6 { left: 497px; top: 343px; }
+.hub-node.n7 { left: 549px; top: 115px; }
+
+/* — system flow diagram — */
+.flow2-wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+.flow2-diagram { position: relative; width: 1680px; height: 620px; flex: none; }
+.flow2-lanecard { position: absolute; left: 0; width: 1680px; height: 143px; border: 1px solid var(--color-accent-400); border-radius: 12px; box-sizing: border-box; }
+.flow2-lane { position: absolute; left: 24px; width: 140px; }
+.flow2-lane b { display: block; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; color: var(--color-accent-700); line-height: 1.2; }
+.flow2-lane span { display: block; font-size: 24px; color: color-mix(in srgb, var(--color-text) 70%, transparent); line-height: 1.25; margin-top: 4px; }
+.flow2-lines { position: absolute; left: 0; top: 0; width: 1680px; height: 620px; overflow: visible; }
+.flow2-line { stroke: var(--color-accent); stroke-width: 2; fill: none; }
+.flow2-step { position: absolute; width: 150px; height: 96px; border: 1px solid var(--color-accent-600); border-radius: 8px; background: var(--color-bg); padding: 38px 8px 10px; box-sizing: border-box; transform: translateX(-50%); text-align: center; }
+.flow2-badge { position: absolute; left: 8px; top: 8px; width: 26px; height: 26px; background: var(--color-accent); color: var(--color-bg); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+.flow2-step b { display: block; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; line-height: 1.2; white-space: nowrap; text-align: center; }
+
+/* — expansion roadmap — */
+.expansion-row { display: flex; gap: 45px; margin-top: 40px; }
+.expansion-card { position: relative; width: 530px; border: 1px solid var(--color-accent-600); border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; background: #FFFFFF; color: #1d1f20; }
+.expansion-card:not(:last-child)::after { content: "→"; position: absolute; right: -39px; top: 50%; transform: translateY(-50%); font-size: 32px; color: var(--color-accent); }
+.expansion-phase { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-accent-700); }
+.expansion-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 30px; line-height: 1.2; margin: 0; }
+.expansion-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.expansion-list li { position: relative; padding-left: 28px; font-size: 24px; line-height: 1.35; }
+.expansion-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 10px; height: 10px; background: var(--color-accent); }
+
+/* — roadmap phase slides — */
+.roadmap-steps { display: flex; align-items: flex-start; margin: 48px 0 40px; }
+.roadmap-step { flex: 1; text-align: center; }
+.roadmap-step-badge { width: 60px; height: 60px; margin: 0 auto 14px; border: 1px solid var(--color-accent-600); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 28px; color: var(--color-accent-700); }
+.roadmap-step-text { font-size: 24px; line-height: 1.35; max-width: 420px; margin: 0 auto; }
+.roadmap-step-connector { flex: 0 0 70px; height: 2px; background: var(--color-divider); margin-top: 30px; }
+.roadmap-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; flex: 1; align-items: stretch; }
+.roadmap-card { border: 1px solid var(--color-accent-600); border-radius: 8px; padding: 26px; background: #FFFFFF; color: #1d1f20; }
+.roadmap-card-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; color: var(--color-accent-700); margin: 0 0 10px; }
+.roadmap-card p { font-size: 24px; line-height: 1.35; margin: 0; opacity: 0.85; }
+.pipeline-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 48px 0 30px; }
+.pipeline-note { font-size: 24px; color: var(--color-accent-700); margin-left: 12px; }
+.pipeline-arrow { font-size: 24px; color: var(--color-accent); }
+.layer-list { position: relative; padding-left: 30px; }
+.layer-list::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2px; background: var(--color-divider); }
+.layer-row { display: flex; align-items: flex-start; gap: 16px; padding: 9px 0; position: relative; }
+.layer-dot { width: 18px; height: 18px; border-radius: 4px; background: var(--color-accent); flex: none; margin-top: 3px; }
+.layer-row span { font-size: 24px; }
+.agent-tree { display: flex; flex-direction: column; align-items: center; margin-top: 48px; }
+.agent-lead { width: 360px; padding: 18px 24px; text-align: center; border: 1px solid var(--color-accent-600); border-radius: 8px; }
+.agent-lead-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; color: var(--color-accent-700); }
+.agent-lead p { font-size: 24px; margin: 4px 0 0; }
+.agent-trunk { width: 2px; height: 26px; background: var(--color-divider); }
+.agent-branch-bar { width: 1680px; height: 2px; background: var(--color-divider); }
+.agent-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; width: 1680px; margin: 0 auto; }
+.agent-col { display: flex; flex-direction: column; align-items: center; }
+.agent-col .agent-card { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.agent-drop { width: 2px; height: 20px; background: var(--color-divider); }
+.agent-card { padding: 20px; width: 100%; box-sizing: border-box; text-align: center; border: 1px solid var(--color-accent-600); border-radius: 8px; background: #FFFFFF; color: #1d1f20; }
+.agent-card-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; color: var(--color-accent-700); }
+.agent-card p { font-size: 24px; margin: 4px 0 0; }
+.mode-row { display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 36px; }
+.mode-row span:first-child { font-size: 24px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+
+/* — multi-tenant comparison table — */
+.mt-hub { background: var(--color-accent-100); border-color: var(--color-accent) !important; color: var(--color-accent-800); }
+.mt-body { display: flex; gap: 48px; flex: 1; min-height: 0; margin-top: 20px; }
+.mt-table-col { flex: 1.5; }
+.mt-table { width: 100%; border-collapse: collapse; }
+.mt-table th { text-align: left; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; letter-spacing: 0.05em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); padding: 0 16px 12px 0; border-bottom: 1px solid var(--color-divider); }
+.mt-table td { font-size: 27px; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-divider); vertical-align: top; line-height: 1.35; }
+.mt-table tr:last-child td { border-bottom: none; }
+.mt-table td:first-child { font-family: var(--font-heading); font-weight: var(--font-heading-weight); white-space: nowrap; }
+.infra-panel { flex: 1; border: 1px solid var(--color-accent-600); border-radius: 8px; padding: 28px; }
+.infra-panel-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 10px; }
+.infra-item { padding: 10px 0; border-top: 1px solid var(--color-divider); }
+.infra-item:first-child { border-top: none; padding-top: 0; }
+.infra-item p { font-size: 24px; line-height: 1.3; margin: 0; }
+.vision-body { display: flex; gap: 56px; flex: 1; min-height: 0; align-items: stretch; }
+.vision-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+.vision-img { width: 620px; flex: none; border: 1px solid var(--color-divider); border-radius: 8px; overflow: hidden; background: #14161c; }
+.vision-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.brand-header { position: absolute; top: 40px; right: var(--pad-x); display: flex; align-items: center; gap: 14px; z-index: 2; }
+.brand-header .brand-mark { width: 44px; height: 44px; flex: none; overflow: hidden; border: 1px solid var(--color-divider); border-radius: 8px; }
+.brand-header img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.brand-header span { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; color: var(--color-text); }
+.cover .brand-header { display: none; }
+
+/* — feature slides — */
+.feature-tags { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.feature-list { margin-top: 40px; max-width: 1680px; }
+.feature-list li b { color: var(--color-accent-700); }
+
+/* — metrics — */
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; }
+.metric-card { border: 1px solid var(--color-divider); padding: 28px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF; color: #1d1f20; border-radius: 8px; }
+.metric-num { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 64px; line-height: 1; color: var(--color-accent); font-feature-settings: "tnum" 1; }
+.metric-label { font-size: 24px; line-height: 1.3; color: #1d1f20; }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-deck-active] .rise { animation: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  .flow2-step { opacity: 0; }
+  [data-deck-active] .flow2-step { animation: stepIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @keyframes stepIn { from { opacity: 0; transform: translateY(10px) scale(0.9); } }
+  [data-deck-active] .hub-line { opacity: 1; stroke-dasharray: 300; stroke-dashoffset: 300; animation: drawLine 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, pulseLine 2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s infinite; }
+  @keyframes drawLine { to { stroke-dashoffset: 0; } }
+  .hub-line:nth-child(1) { [data-deck-active] animation-delay: 0.2s, 0.8s; }
+  .hub-line:nth-child(2) { [data-deck-active] animation-delay: 0.35s, 0.95s; }
+  .hub-line:nth-child(3) { [data-deck-active] animation-delay: 0.5s, 1.1s; }
+  .hub-line:nth-child(4) { [data-deck-active] animation-delay: 0.65s, 1.25s; }
+  .hub-line:nth-child(5) { [data-deck-active] animation-delay: 0.8s, 1.4s; }
+  .hub-line:nth-child(6) { [data-deck-active] animation-delay: 0.95s, 1.55s; }
+  .hub-line:nth-child(7) { [data-deck-active] animation-delay: 1.1s, 1.7s; }
+  @keyframes pulseLine { 0%, 100% { stroke: var(--color-accent); filter: drop-shadow(0 0 0 rgba(79, 168, 240, 0)); } 50% { stroke: #6FBBFF; filter: drop-shadow(0 0 8px rgba(79, 168, 240, 0.6)); } }
+  .hub-node { opacity: 1; transform: scale(1); }
+  [data-deck-active] .hub-node { animation: hubNodeFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+  [data-deck-active] .hub-node.n1 { animation-delay: 0.2s; }
+  [data-deck-active] .hub-node.n2 { animation-delay: 0.35s; }
+  [data-deck-active] .hub-node.n3 { animation-delay: 0.5s; }
+  [data-deck-active] .hub-node.n4 { animation-delay: 0.65s; }
+  [data-deck-active] .hub-node.n5 { animation-delay: 0.8s; }
+  [data-deck-active] .hub-node.n6 { animation-delay: 0.95s; }
+  [data-deck-active] .hub-node.n7 { animation-delay: 1.1s; }
+}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%" data-uneditable="">
+
+  <section class="slide cover" data-label="Mở đầu" data-screen-label="01" data-speaker-notes="" data-om-slide-id="efbe1ba2"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>NexusBot</span></div>
+    <div class="rise">
+      <h1 class="display">Nexus Agent</h1>
+      <p class="cover-sub">Nexus Agent là một AI Agent đảm nhiệm nhiều vai trò trong hệ thống doanh nghiệp, từ vận hành &amp; quản lý đến tri thức nội bộ &amp; con người.</p>
+    </div>
+    <div class="pin-bottom meta"><span>·</span></div>
+  </section>
+
+  <section class="slide content" data-label="Agenda" data-screen-label="02" data-speaker-notes="" data-om-slide-id="cad3dcc8"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span>Nội dung</span></div>
+    <h2 class="slide-title">Agenda</h2>
+    <div class="toc rise">
+      <div class="toc-row"><span class="toc-num">1</span><span class="toc-label" style="font-size: 44px">Vấn đề hiện tại</span></div>
+      <div class="toc-row"><span class="toc-num">2</span><span class="toc-label" style="font-size: 44px">Giải pháp - Nexus Agent</span></div>
+      <div class="toc-row"><span class="toc-num">3</span><span class="toc-label" style="font-size: 44px">Tính năng nổi bật</span></div>
+      <div class="toc-row"><span class="toc-num">4</span><span class="toc-label" style="font-size: 44px">Đo lường</span></div>
+      <div class="toc-row"><span class="toc-num">5</span><span class="toc-label" style="font-size: 44px">Tầm nhìn</span></div>
+    </div>
+  </section>
+
+  
+
+  <section class="slide solution light-bg" data-label="Vấn đề · Tốn thời gian" data-screen-label="03a" data-speaker-notes="- Hàng ngày, PM thường xuyên phải kiểm tra, phân tích schedule để xem member làm bao nhiêu task, ai quên log task, cập nhật lại schedule.
+- Kiểm tra timesheet, schedule để kiểm tra lại tiến độ và phân tích các rủi ro của dự án.
+- Các cuộc họp thì luôn phải take note, memo lại thông tin của buổi họp." data-om-slide-id="9b08f395"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">VẤN ĐỀ HIỆN TẠI</span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 40px; align-items: center; height: 780px">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 32px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <b style="font-size: 44px; font-family: &quot;Barlow Condensed&quot;, system-ui, sans-serif">Công việc thủ công nhiều, lặp đi lặp lại</b>
+        <ul class="problem-list" style="color: #6B7684;">
+          <li style="font-size: 32px;">PM thường xuyên phải nhắc nhở, theo dõi trạng thái công việc.</li>
+          <li style="font-size: 32px;">Cập nhật schedule hàng ngày.</li>
+          <li style="font-size: 32px;">Take note, memo nội dung cuộc họp.</li>
+          <li style="font-size: 32px;">Tính toán effort để kiểm tra tiến độ và phân tích rủi ro/ issue.</li>
+        </ul>
+      </div>
+      <image-slot id="slide03a-thumb" shape="rounded" radius="12px" placeholder="Kéo thả ảnh minh họa vào đây" style="flex: 0 0 65%; height: 100%; min-width: 0;" src="./mot-pm-chuyen-nghiep-can-thuc-hien-lap-k-msrneunb-9f41.jpg"></image-slot>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Vấn đề · Phản hồi chậm" data-screen-label="03b" data-speaker-notes="- Khối lượng công việc lớn, đôi khi PM quên follow theo những risks hoặc issues cần được xử lý trong dự án -&gt; phản hồi chậm &amp; bỏ sót những cảnh báo." data-om-slide-id="e27038c9"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">VẤN ĐỀ HIỆN TẠI</span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 40px; align-items: center; height: 780px">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 32px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <b style="font-size: 44px; font-family: &quot;Barlow Condensed&quot;, system-ui, sans-serif">Quá tải trong công việc</b>
+        <ul class="problem-list" style="color: #6B7684;">
+          <li style="font-size: 32px;">Bỏ sót các cảnh báo và rủi ro trong dự án.</li>
+          <li style="font-size: 32px;">Không phát hiện kịp thời các vấn đề sớm.</li><li style="font-size: 32px;">Bị động khi gặp sự cố.</li>
+        </ul>
+      </div>
+      <image-slot id="slide03b-thumb" shape="rounded" radius="12px" placeholder="Kéo thả ảnh minh họa vào đây" style="flex: 0 0 65%; height: 100%; min-width: 0;" src="./product-manager-msro590o-gz9u.webp"></image-slot>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Vấn đề · Phân tán thông tin" data-screen-label="03c" data-speaker-notes="- Thông tin tài liệu của dự án phân bổ ở nhiều nơi khác nhau.
+- Tìm kiếm hoặc tổng hợp thông tin khó khăn và dễ sai sót (không đúng hoặc chưa cập nhật mới nhất)." data-om-slide-id="49b9a4b2"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">VẤN ĐỀ HIỆN TẠI</span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 40px; align-items: center; height: 780px">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 32px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <b style="font-size: 44px; font-family: &quot;Barlow Condensed&quot;, system-ui, sans-serif">Tài liệu lưu trữ ở nhiều nơi, dễ sai sót</b>
+        <ul class="problem-list" style="color: #6B7684;">
+          <li style="font-size: 32px;">Thông tin dự án nằm rải rác ở nhiều nơi, nhiều phiên bản.</li><li style="font-size: 32px;">Rủi ro thông tin cũ, chưa được update mới.</li><li style="font-size: 32px;">Tốn thời gian tìm kiếm, dễ sai sót.</li>
+        </ul>
+      </div>
+      <image-slot id="slide03c-thumb" shape="rounded" radius="12px" placeholder="Kéo thả ảnh minh họa vào đây" style="flex: 0 0 65%; height: 100%; min-width: 0;"></image-slot>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Vấn đề · Thiếu workspace chung" data-screen-label="03d" data-speaker-notes="- Người và AI Agent chưa có không gian làm việc chung.
+- Mỗi người sử dụng 1 công cụ riêng (Gemini, ChatGPT, Claude, ...) -&gt; nguồn tri thức không đồng nhất, dẫn đến sai lệch thông tin." data-om-slide-id="c62856e4"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">VẤN ĐỀ HIỆN TẠI</span></div>
+    
+  <div class="rise" style="margin-top: 40px; display: flex; gap: 40px; align-items: center; height: 780px">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 32px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <b style="font-size: 44px; font-family: &quot;Barlow Condensed&quot;, system-ui, sans-serif">Thiếu workspace chung</b>
+        <ul class="problem-list" style="color: #6B7684;">
+          <li style="font-size: 32px;">Mỗi người sử dụng một công cụ AI cá nhân/ riêng lẻ.</li><li style="font-size: 32px;">Thông tin không đồng nhất.</li><li style="font-size: 32px;">Nguy cơ lộ dữ liệu nội bộ.</li>
+        </ul>
+      </div>
+      <image-slot id="slide03d-thumb" shape="rounded" radius="12px" placeholder="Kéo thả ảnh minh họa vào đây" style="flex: 0 0 65%; height: 100%; min-width: 0;" src="./h3kp6lpjoe5t2jhcslxsowx9lxk8adk9jiraengo-msrokfp3-4s1q.png"></image-slot>
+    </div></section>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="Tự động hóa vận hành – Tối ưu tiến độ – Chuẩn hóa tri thức dự án.
+- Tự gom daily report và liên tục rà soát rủi ro, cảnh báo hàng ngày -&gt; giúp PM luôn follow, bám sát dự án.
+- Tự tóm tắt các vấn đề chính trong cuộc họp.
+- Chuẩn hoá, đồng nhất &amp; tra cứu tài liệu dự án. " data-om-slide-id="7be4b19c"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">TÍNH NĂNG NỔI BẬT - PM AGENT</span></div>
+    <div class="rise" style="margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+      <div style="padding: 40px 48px; border: 2px solid var(--color-accent-600); border-radius: 12px; display: flex; flex-direction: column; gap: 16px;">
+        <b style="font-size: 44px">Quản lý tiến độ &amp; rủi ro trong dự án</b>
+        <span style="font-size: 32px; color: #6B7684; line-height: 1.4">Tự động hoá trong việc báo cáo, cập nhật schedule &amp; theo dõi, cảnh báo rủi ro.</span>
+      </div>
+      <div style="padding: 40px 48px; border: 2px solid var(--color-accent-600); border-radius: 12px; display: flex; flex-direction: column; gap: 16px;">
+        <b style="font-size: 44px">Tóm tắt nội dung cuộc họp</b>
+        <span style="font-size: 32px; color: #6B7684; line-height: 1.4">Tự động dịch và tóm tắt nội dung cuộc họp.</span>
+      </div>
+      <div style="padding: 40px 48px; border: 2px solid var(--color-accent-600); border-radius: 12px; display: flex; flex-direction: column; gap: 16px;">
+        <b style="font-size: 44px">Nạp và tra cứu kho dữ liệu LLM Wiki</b>
+        <span style="font-size: 32px; color: #6B7684; line-height: 1.4">Đồng bộ dữ liệu, truy cứu thông tin nhanh gọn, chính xác.</span>
+      </div>
+    </div>
+  </section><section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="" data-om-slide-id="4841f19f"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px"><span style="letter-spacing: 2.76px">PM AGENT</span></span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 56px; align-items: center; height: 780px;">
+      <div style="flex: 0 0 36%; display: flex; flex-direction: column; gap: 28px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <div class="feature-tags" style="align-items: center;">
+          <span class="result-tag" style="font-size: 36px">Nhắc nhở</span><span class="merge-arrow">→</span><span class="result-tag" style="font-size: 36px">Cập nhật tiến độ công việc</span>
+          
+          
+        </div>
+        <ul class="feature-list problem-list" style="margin-top: 0; color: #6B7684;">
+          <li style="font-size: 32px">Agent tự động mention members báo cáo tiến độ công việc trong ngày.</li>
+          <li style="font-size: 32px">Members đưa thông tin để Agent thực thi việc cập nhật tiến độ vào schedule trên Jira/ Google sheet.<br></li><li style="font-size: 32px">Tự động log risk/issue để theo dõi khi cần.<br></li>
+        </ul>
+      </div>
+      <div style="flex: 1; height: 100%; position: relative; min-width: 0; border-radius: 12px; overflow: hidden;">
+        <video src="uploads/reminder-update-log-task-8dbe70f2.mp4" controls="" muted="" playsinline="" data-autoplay-slide="" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;"></video>
+      </div>
+    </div>
+  </section><section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="" data-om-slide-id="0ea32123"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px"><span style="letter-spacing: 2.76px">PM AGENT</span></span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 56px; align-items: center; height: 780px;">
+      <div style="flex: 0 0 36%; display: flex; flex-direction: column; gap: 28px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <div class="feature-tags" style="align-items: center;">
+          <span class="result-tag" style="font-size: 44px">Tổng hợp tiến độ công việc hàng ngày</span>
+          
+          
+        </div>
+        <ul class="feature-list problem-list" style="margin-top: 0; color: #6B7684;">
+          <li style="font-size: 32px">Báo cáo tiến độ của tất cả công việc trong ngày.</li>
+          <li style="font-size: 32px">Tự động phân tích, đánh giá tiến độ của task.</li><li style="font-size: 32px">Tự động re-schedule nếu có yêu cầu.</li>
+        </ul>
+      </div>
+      <div style="flex: 1; height: 100%; position: relative; min-width: 0; border-radius: 12px; overflow: hidden;">
+        <video src="uploads/daily-repor-risk-assessment.mp4" controls="" muted="" playsinline="" data-autoplay-slide="" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;"></video>
+      </div>
+    </div>
+  </section><section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="" data-om-slide-id="289205df"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px"><span style="letter-spacing: 2.76px">PM AGENT</span></span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 56px; align-items: center; height: 780px;">
+      <div style="flex: 0 0 36%; display: flex; flex-direction: column; gap: 28px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <div class="feature-tags" style="align-items: center;">
+          <span class="result-tag" style="font-size: 40px">Theo dõi, cảnh báo rủi ro và tiến độ dự án</span>
+          
+          
+        </div>
+        <ul class="feature-list problem-list" style="margin-top: 0; color: #6B7684;">
+          <li style="font-size: 32px">Tự động theo dõi rủi ro và issue của dự án để đưa ra cảnh báo hằng ngày.</li><li style="font-size: 32px">Tự động phân tích, đánh giá tiến độ.</li>
+          <li style="font-size: 32px">Cập nhật next-action của PM khi có yêu cầu và theo dõi nó.</li>
+        </ul>
+      </div>
+      <div style="flex: 1; height: 100%; position: relative; min-width: 0; border-radius: 12px; overflow: hidden;">
+        <video src="uploads/summary-evidence.mp4" controls="" muted="" playsinline="" data-autoplay-slide="" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;"></video>
+      </div>
+    </div>
+  </section><section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="" data-om-slide-id="2f72f8de"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px"><span style="letter-spacing: 2.76px">PM AGENT</span></span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 56px; align-items: center; height: 780px;">
+      <div style="flex: 0 0 36%; display: flex; flex-direction: column; gap: 28px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <div class="feature-tags" style="align-items: center;">
+          <span class="result-tag" style="font-size: 44px">Tổng hợp, cập nhật evidence</span>
+          
+          
+        </div>
+        <ul class="feature-list problem-list" style="margin-top: 0; color: #6B7684;">
+          <li style="font-size: 32px">Agent tự cập nhật và tổng hợp evidence mà members cung cấp.</li><li style="font-size: 32px">Phân loại, kiểm tra và lưu trữ (Google Sheets).</li>
+          
+        </ul>
+      </div>
+      <div style="flex: 1; height: 100%; position: relative; min-width: 0; border-radius: 12px; overflow: hidden;">
+        <video src="uploads/daily-repor-risk-assessment.mp4" controls="" muted="" playsinline="" data-autoplay-slide="" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;"></video>
+      </div>
+    </div>
+  </section><section class="slide solution light-bg" data-label="Theo dõi, quản lý schedule" data-screen-label="09" data-speaker-notes="" data-om-slide-id="15fcb7ed"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px"><span style="letter-spacing: 2.76px">PM AGENT</span></span></div>
+    <div class="rise" style="margin-top: 40px; display: flex; gap: 56px; align-items: center; height: 780px;">
+      <div style="flex: 0 0 36%; display: flex; flex-direction: column; gap: 28px; justify-content: flex-start; align-self: flex-start; min-width: 0;">
+        <div class="feature-tags" style="align-items: center;">
+          <span class="result-tag" style="font-size: 44px">Tóm tắt nội dung cuộc họp</span>
+          
+          
+        </div>
+        <ul class="feature-list problem-list" style="margin-top: 0; color: #6B7684;">
+          <li style="font-size: 32px">Tự vào họp qua Meet/Zoom, thông qua Vexa.</li><li style="font-size: 32px">Transcribe real-time trong suốt cuộc họp.</li><li style="font-size: 32px">Tóm tắt nội dung và action item ngay khi họp xong.</li>
+          
+        </ul>
+      </div>
+      <div style="flex: 1; height: 100%; position: relative; min-width: 0; border-radius: 12px; overflow: hidden;">
+        <video src="uploads/meeting-notes-a958a123.mp4" controls="" muted="" playsinline="" data-autoplay-slide="" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;"></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide light-bg" data-label="Kiến trúc tổng thể" data-screen-label="10a" style="position:relative;width:1920px;height:1080px;overflow:hidden;" data-speaker-notes="" data-om-slide-id="bc0b45ad">
+    <iframe src="uploads/llm-wiki/kien-truc-tong-the.dc.html" title="Kiến trúc tổng thể" style="position:absolute;left:0;top:0;width:1920px;height:1080px;border:none;"></iframe>
+  </section>
+
+  <section class="slide light-bg" data-label="Nạp tri thức" data-screen-label="10c" style="position:relative;width:1920px;height:1080px;overflow:hidden;" data-speaker-notes="" data-om-slide-id="994e1d13">
+    <iframe src="uploads/llm-wiki/nap-tri-thuc.dc.html" title="Nạp tri thức" style="position:absolute;left:0;top:0;width:1920px;height:1080px;border:none;"></iframe>
+  </section><section class="slide light-bg" data-label="Tổ chức tri thức" data-screen-label="10b" style="position:relative;width:1920px;height:1080px;overflow:hidden;" data-speaker-notes="" data-om-slide-id="ca7be2c8">
+    <iframe src="uploads/llm-wiki/to-chuc-tri-thuc.dc.html" title="Tổ chức tri thức" style="position:absolute;left:0;top:0;width:1920px;height:1080px;border:none;"></iframe>
+  </section>
+
+  
+
+  <section class="slide light-bg" data-label="Truy xuất dữ liệu" data-screen-label="10d" style="position:relative;width:1920px;height:1080px;overflow:hidden;" data-speaker-notes="" data-om-slide-id="6e6d9035">
+    <iframe src="uploads/llm-wiki/truy-xuat-du-lieu.dc.html" title="Truy xuất dữ liệu" style="position:absolute;left:0;top:0;width:1920px;height:1080px;border:none;"></iframe>
+  </section>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <section class="slide solution light-bg" data-label="Đo lường · Kết quả" data-screen-label="12a" data-speaker-notes="Ngưỡng đạt: điểm rubric ≥ 0.9 · 20 lượt × 4 stage = 80 cặp (run, stage)" data-om-slide-id="1e3586c7"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">KẾT QUẢ</span></div>
+    <div class="rise" style="margin-top: 80px; display: flex; gap: 56px; align-items: flex-start;">
+      <div style="flex: 1.2; display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-size: 24px; color: #6B7684;">Tỉ lệ thành công theo Stage (điểm rubric ≥ 0.9)</span>
+        <div style="display: flex; align-items: flex-end; gap: 32px; height: 380px; border-bottom: 1px solid var(--color-divider); padding-bottom: 4px;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">65%</b>
+            <div style="width: 70%; height: 247px; background: var(--color-accent-400);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Reminder</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">75%</b>
+            <div style="width: 70%; height: 285px; background: var(--color-accent-600);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">GG-Sheet</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">85%</b>
+            <div style="width: 70%; height: 323px; background: var(--color-accent-700);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Daily-Report</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">100%</b>
+            <div style="width: 70%; height: 380px; background: var(--color-accent-800);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Risk-Assessment</span>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 0.8; display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <div class="metric-card"><div class="metric-num">81,3%</div><div class="metric-label">Cặp (run, stage) đạt ≥ 0,9 — 65/80</div></div>
+        <div class="metric-card"><div class="metric-num">45%</div><div class="metric-label">Thành công end-to-end cả 4 stage — 9/20 lượt</div></div>
+        <div class="metric-card"><div class="metric-num">0,934</div><div class="metric-label">Điểm rubric trung bình toàn bộ 80 ô</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Đo lường · Hiệu quả" data-screen-label="12b" data-speaker-notes="Đơn giá người: 40tr/tháng ÷ 160 giờ = 250.000đ/giờ · ~1 giờ/lượt · tỉ giá 26.000đ/USD" data-om-slide-id="a54ade04"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">HIỆU QUẢ</span></div>
+    <div class="rise" style="margin-top: 80px; display: flex; gap: 56px; align-items: flex-start;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-size: 24px; color: #6B7684;">Chi phí 1 năm — 250 lượt (VND)</span>
+        <div style="display: flex; align-items: flex-end; gap: 48px; height: 320px; border-bottom: 1px solid var(--color-divider); padding-bottom: 4px;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px; color: #6B7684;">62,5tr</b>
+            <div style="width: 55%; height: 320px; background: #AEB8C4;"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Nhân sự (PM)</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px; color: var(--color-accent-700);">1,66tr</b>
+            <div style="width: 55%; height: 9px; background: var(--color-accent-800);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">AI (NexusBot)</span>
+          </div>
+        </div>
+        <p style="font-size: 24px; color: #6B7684; line-height: 1.5; margin: 8px 0 0;">Tiết kiệm <b style="color: var(--color-accent-700);">~97,3%</b> · nhanh hơn <b style="color: var(--color-accent-700);">~60×</b> · hoàn vốn <b style="color: var(--color-accent-700);">~37,5×</b>/lượt · <b style="color: var(--color-accent-700);">~60,8 triệu đ/năm/team</b></p>
+      </div>
+      <div style="flex: 1; min-width: 0;">
+        <table class="mt-table" style="width: 100%;">
+          <thead><tr><th>Quy mô</th><th>AI</th><th>Người</th></tr></thead>
+          <tbody>
+            <tr><td>1 lượt</td><td>6.700đ</td><td>250.000đ</td></tr>
+            <tr><td>20 lượt</td><td>133.000đ</td><td>5,0tr đ</td></tr>
+            <tr><td>250 lượt / năm</td><td>1,66tr đ</td><td>62,5tr đ</td></tr>
+            <tr><td>Tiết kiệm / năm</td><td colspan="2" style="text-align: center; color: var(--color-accent-700); font-weight: 600;">≈ 60,8 triệu VND (~$2.340)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Đo lường · Độ tin cậy" data-screen-label="12c" data-speaker-notes="Rating trung bình / stage (thang 0 – 1,0) · trung bình hệ thống 0,934" data-om-slide-id="8b5ec09b"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">ĐỘ TIN CẬY</span></div>
+    <div class="rise" style="margin-top: 80px; display: flex; gap: 56px; align-items: flex-start;">
+      <div style="flex: 1.2; display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-size: 24px; color: #6B7684;">Độ tin cậy (Rating) theo Stage</span>
+        <div style="display: flex; align-items: flex-end; gap: 32px; height: 320px; border-bottom: 1px solid var(--color-divider); padding-bottom: 4px;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">0,90</b>
+            <div style="width: 70%; height: 288px; background: var(--color-accent-600);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Reminder</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">0,87</b>
+            <div style="width: 70%; height: 278px; background: var(--color-accent-400);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">GG-Sheet</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">0,97</b>
+            <div style="width: 70%; height: 310px; background: var(--color-accent-700);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Daily-Report</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+            <b style="font-size: 28px; margin-bottom: 8px;">1,00</b>
+            <div style="width: 70%; height: 320px; background: var(--color-accent-800);"></div>
+            <span style="font-size: 24px; color: #6B7684; margin-top: 12px;">Risk-Assessment</span>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 0.8; display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <div class="metric-card"><div class="metric-num">93,4%</div><div class="metric-label">Độ tin cậy trung bình hệ thống</div></div>
+        <div style="border: 1px solid var(--color-divider); padding: 20px 24px; font-size: 24px; color: #6B7684; line-height: 1.6;">
+          <b style="color: var(--color-accent-700);">Ổn định nhất:</b> Risk-Assessment 1,00 (rule engine Python, không LLM)<br>
+          <b style="color: var(--color-accent-700);">Yếu nhất:</b> GG-Sheet 0,87
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="background: var(--color-accent-100); color: var(--color-accent-800); border-radius: 999px; padding: 8px 16px; font-size: 24px; font-weight: 600; align-self: flex-start; white-space: nowrap;">Hallucination rất thấp</span>
+          <span style="background: var(--color-accent-100); color: var(--color-accent-800); border-radius: 999px; padding: 8px 16px; font-size: 24px; font-weight: 600; align-self: flex-start; white-space: nowrap;">Không rò rỉ credential</span>
+          <span style="background: var(--color-accent-100); color: var(--color-accent-800); border-radius: 999px; padding: 8px 16px; font-size: 24px; font-weight: 600; align-self: flex-start; white-space: nowrap;">Hành động phá huỷ luôn cần xác nhận</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+
+  
+
+  
+
+  <section class="slide solution light-bg" data-label="Tầm nhìn · Giai đoạn 1" data-screen-label="13" data-speaker-notes="Tầm nhìn mở rộng  
+giai đoạn 1: nhân bản " data-om-slide-id="1370d73e"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">Tầm nhìn</span></div>
+    <div class="rise" style="margin-top: 8px;"><span style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 44px; color: var(--color-accent-700); line-height: 1.4;">Giai đoạn 1 - Nhân bản</span></div>
+    <div class="vision-body rise" style="margin-top: 32px; justify-content: center;">
+      <div class="vision-img" style="width: 1180px; height: 644px; align-self: center; background: transparent; border: none;"><img src="uploads/multi-tenant.png" alt="Sơ đồ kiến trúc multi-tenant Nexus"></div>
+    </div>
+  </section>
+
+  <section class="slide solution light-bg" data-label="Tầm nhìn · Giai đoạn 2" data-screen-label="14" data-speaker-notes="giai đoạn 2 : Mở rộng " data-om-slide-id="53098d70"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>Nexus Agent</span></div>
+    <div class="kicker"><span style="font-size: 96px">Tầm nhìn</span></div>
+    <div class="rise" style="margin-top: 8px;"><span style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 44px; color: var(--color-accent-700); line-height: 1.4;">Giai đoạn 2 - Mở rộng</span></div>
+    <div class="vision-body rise" style="margin-top: 32px; justify-content: center;">
+      <div class="vision-img" style="width: 1200px; height: 736px; align-self: center; background: transparent; border: none;"><img src="uploads/agent-orchestration.png" alt="Sơ đồ điều phối Lead Agent" style="width: 1182px; height: 695px; margin-top: 40px; margin-bottom: 40px"></div>
+    </div>
+  </section>
+
+  <section class="slide cover" data-label="Kết thúc" data-screen-label="15" data-speaker-notes="" data-om-slide-id="3db0b9ed"><div class="brand-header"><div class="brand-mark"><img src="assets/nexus-avatar.png" alt="NexusBot"></div><span>NexusBot</span></div>
+    <div class="kicker k-right"><span></span></div>
+    <div class="rise" style="text-align: center;">
+      <h1 class="display">Q&amp;A</h1>
+      
+    </div>
+    <div class="pin-bottom meta"><span>·</span></div>
+  </section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

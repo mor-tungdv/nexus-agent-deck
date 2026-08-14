@@ -1,0 +1,8 @@
+# macOS rác
+.DS_Store
+._*
+.thumbnail
+
+# KHÔNG ignore .image-slots.state.json — image-slot.js fetch file này lúc render
+# để hydrate ảnh vào từng slot. Ignore nhầm thì các ô ảnh hiện trống trên Pages
+# mà không có lỗi nào báo ra.

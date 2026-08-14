@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0E1B33"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E1B33"/><circle cx="50" cy="50" r="14" fill="#5B9CF6"/><circle cx="25" cy="30" r="6" fill="#7DD3FC"/><circle cx="75" cy="30" r="6" fill="#F5A04C"/></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Be Vietnam Pro',system-ui,sans-serif}
+  a{color:#5B9CF6;text-decoration:none}
+  a:hover{color:#7DD3FC}
+</style>
+</helmet>
+<div style="width:1920px;height:1080px;background:#EEF0F4;padding:50px 60px 48px;display:flex;flex-direction:column;color:#0F172A;position:relative;overflow:hidden">
+
+  <!-- Header -->
+  <div style="display:flex;flex-direction:column;gap:10px;height:150px;flex:none">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="width:10px;height:10px;border-radius:50%;background:#5B9CF6;box-shadow:0 0 0 4px rgba(91,156,246,0.18)"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:3px;color:#64748B;text-transform:uppercase">LLM Wiki · Knowledge Organization</span>
+    </div>
+    <h1 style="font-size:42px;font-weight:800;line-height:1.14;letter-spacing:-0.5px;color:#0F172A;max-width:1560px;text-wrap:balance">Tri thức được tổ chức ra sao?</h1>
+    <p style="font-size:21px;font-weight:500;color:#5A6B84;line-height:1.3">Mỗi trang đại diện một thực thể; facts được tham chiếu và mọi liên kết đều giữ đường về nguồn.</p>
+  </div>
+
+  <!-- Main row -->
+  <div style="flex:1;min-height:0;display:flex;gap:26px;margin-top:20px">
+
+    <!-- Graph canvas -->
+    <div style="flex:1;position:relative;border-radius:22px;overflow:hidden;background-color:#0E1B33;background-image:radial-gradient(circle at 38% 30%,rgba(46,80,140,0.55),transparent 62%),radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1.4px);background-size:auto,28px 28px;box-shadow:0 20px 50px -20px rgba(14,27,51,0.5),inset 0 0 0 1px rgba(255,255,255,0.05)">
+
+      <div style="position:absolute;top:18px;left:22px;display:flex;align-items:center;gap:8px;z-index:2">
+        <span style="width:7px;height:7px;border-radius:50%;background:#5B9CF6"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:2.5px;color:rgba(255,255,255,0.4);text-transform:uppercase">Graph Explorer · Wiki</span>
+      </div>
+
+      <svg viewBox="0 0 1302 708" width="100%" height="100%" style="display:block" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="kg-glow" x="-70%" y="-70%" width="240%" height="240%">
+            <feGaussianBlur stdDeviation="6" result="b"></feGaussianBlur>
+            <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+          </filter>
+          <filter id="kg-far" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="1.9"></feGaussianBlur></filter>
+          <filter id="kg-mid" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="0.9"></feGaussianBlur></filter>
+          <filter id="kg-shadow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#020814" flood-opacity="0.55"></feDropShadow></filter>
+          <radialGradient id="kg-sheen" cx="50%" cy="50%" fx="34%" fy="28%" r="66%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.5)"></stop>
+            <stop offset="52%" stop-color="rgba(255,255,255,0.07)"></stop>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+          </radialGradient>
+        </defs>
+
+        <!-- ===== BACKGROUND DEPTH (very back → mid) ===== -->
+        <!-- faint perspective grid converging toward back -->
+        <g stroke="#9DB8E0" stroke-width="1" fill="none" opacity="0.05">
+          <path d="M60,708 L680,70"></path>
+          <path d="M360,708 L680,70"></path>
+          <path d="M700,708 L680,70"></path>
+          <path d="M1040,708 L680,70"></path>
+          <path d="M1260,708 L680,70"></path>
+        </g>
+        <!-- FAR layer: tiny, dim, blurred, near-invisible links -->
+        <g filter="url(#kg-far)">
+          <g stroke="#A9C2E8" stroke-width="1" opacity="0.06" fill="none">
+            <path d="M640,120 L690,100 L740,128"></path>
+            <path d="M1185,255 L1225,305"></path>
+            <path d="M1160,290 L1245,235"></path>
+            <path d="M95,335 L130,400"></path>
+          </g>
+          <g fill="#AFC6E8" opacity="0.13">
+            <circle cx="640" cy="120" r="4"></circle>
+            <circle cx="690" cy="100" r="3.5"></circle>
+            <circle cx="740" cy="128" r="4.5"></circle>
+            <circle cx="700" cy="152" r="3"></circle>
+            <circle cx="770" cy="108" r="3.5"></circle>
+            <circle cx="1185" cy="255" r="4"></circle>
+            <circle cx="1225" cy="305" r="3.5"></circle>
+            <circle cx="1160" cy="290" r="3"></circle>
+            <circle cx="1245" cy="235" r="4"></circle>
+            <circle cx="95" cy="335" r="4"></circle>
+            <circle cx="130" cy="400" r="3.5"></circle>
+          </g>
+        </g>
+        <!-- MID layer: small, dim, faint links -->
+        <g filter="url(#kg-mid)">
+          <g stroke="#B9CFEE" stroke-width="1.2" opacity="0.15" fill="none">
+            <path d="M240,135 L300,165"></path>
+            <path d="M110,630 L160,660"></path>
+            <path d="M1130,520 L1185,475 L1215,555"></path>
+          </g>
+          <g fill="#C2D6F2" opacity="0.3">
+            <circle cx="240" cy="135" r="7"></circle>
+            <circle cx="300" cy="165" r="6"></circle>
+            <circle cx="110" cy="630" r="7"></circle>
+            <circle cx="160" cy="660" r="6"></circle>
+            <circle cx="1130" cy="520" r="7"></circle>
+            <circle cx="1185" cy="475" r="6.5"></circle>
+            <circle cx="1215" cy="555" r="6"></circle>
+            <circle cx="1030" cy="110" r="6.5"></circle>
+          </g>
+        </g>
+
+        <!-- ===== EDGES ===== -->
+
+        <!-- ===== EDGES ===== -->
+        <!-- highlighted underlays for direct SơnBH wiki links -->
+        <g fill="none" stroke="#8FC0FF" stroke-width="9" opacity="0.14" stroke-linecap="round">
+          <path d="M600,350 Q490,245 335,175"></path>
+          <path d="M600,350 Q780,235 955,180"></path>
+          <path d="M705,600 Q885,485 1015,415"></path>
+          <path d="M600,350 Q640,480 705,600"></path>
+        </g>
+
+        <!-- Sprint1 -> Nexus (page-to-page, secondary/dim) -->
+        <path d="M1015,415 Q1035,285 955,180" fill="none" stroke="#6E86AD" stroke-width="2" opacity="0.5"></path>
+        <!-- SơnBH -> Sprint 1 kept but dimmed (indirect path via API Login is more specific) -->
+        <path d="M600,350 Q820,360 1015,415" fill="none" stroke="#6E86AD" stroke-width="1.5" opacity="0.4"></path>
+        <!-- source-return: SơnBH -> Slack (gray thin) -->
+        <path d="M600,350 Q505,470 430,585" fill="none" stroke="#8493AC" stroke-width="1.7" opacity="0.6"></path>
+        <!-- source-return: task_count -> Project Plan (gray thin) -->
+        <path d="M238,361 Q198,445 200,519" fill="none" stroke="#8493AC" stroke-width="1.7" opacity="0.6"></path>
+        <!-- facts_ref: SơnBH -> task_count (green dashed) -->
+        <path d="M600,350 Q450,318 320,330" fill="none" stroke="#4ADE80" stroke-width="2.4" stroke-dasharray="8 6" opacity="0.9"></path>
+        <!-- bright wiki links (direct) -->
+        <g fill="none" stroke="#BFDBFE" stroke-width="2.6" opacity="0.92" stroke-linecap="round">
+          <path d="M600,350 Q490,245 335,175"></path>
+          <path d="M600,350 Q780,235 955,180"></path>
+          <path d="M705,600 Q885,485 1015,415"></path>
+          <path d="M600,350 Q640,480 705,600"></path>
+        </g>
+
+        <!-- ===== EDGE LABELS ===== -->
+        <g font-size="16" font-weight="600" text-anchor="middle" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px;stroke-linejoin:round">
+          <text x="470" y="248" fill="#CBDCF7">có vai trò</text>
+          <text x="790" y="232" fill="#CBDCF7">thuộc dự án</text>
+          <text x="828" y="372" fill="#9DB0CE" opacity="0.85">tham gia sprint</text>
+          <text x="895" y="505" fill="#CBDCF7">thuộc sprint</text>
+          <text x="648" y="486" fill="#CBDCF7">phụ trách</text>
+          <text x="1030" y="290" fill="#9DB0CE" opacity="0.85">thuộc dự án</text>
+          <text x="498" y="474" fill="#98A8C1">lấy từ nguồn</text>
+          <text x="452" y="312" fill="#84E6A6" font-family="'JetBrains Mono',monospace" font-size="15">facts_ref</text>
+          <text x="126" y="452" fill="#98A8C1" font-size="15">nguồn · E6:E59</text>
+        </g>
+
+        <!-- ===== FAINT EXPANSION NODES ===== -->
+        <sc-if value="{{ showExpansion }}" hint-placeholder-val="{{ true }}">
+          <g stroke-dasharray="4 5">
+            <path d="M955,180 L1140,116" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1.4"></path>
+            <path d="M1015,415 L1152,586" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1.4"></path>
+            <circle cx="1140" cy="116" r="15" fill="rgba(148,163,184,0.12)" stroke="rgba(148,163,184,0.4)" stroke-width="1.4"></circle>
+            <circle cx="1152" cy="586" r="17" fill="rgba(148,163,184,0.12)" stroke="rgba(148,163,184,0.4)" stroke-width="1.4"></circle>
+          </g>
+          <g fill="rgba(255,255,255,0.35)" font-size="20" font-weight="600" text-anchor="middle" stroke="none">
+            <text x="1140" y="123">+</text>
+            <text x="1152" y="593">+</text>
+          </g>
+        </sc-if>
+
+        <!-- ===== NODES ===== -->
+        <!-- task_count fact card -->
+        <g>
+          <rect x="158" y="299" width="160" height="62" rx="12" fill="#0C2A1B" stroke="#4ADE80" stroke-width="2" filter="url(#kg-shadow)"></rect>
+          <text x="238" y="326" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="600" fill="#7BE8A3">task_count</text>
+          <text x="238" y="349" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="600" fill="#E6ECF5">= 10</text>
+          <text x="238" y="392" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Fact có cấu trúc</text>
+        </g>
+
+        <!-- Backend (light blue) -->
+        <g>
+          <circle cx="335" cy="175" r="28" fill="#7DD3FC" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle><circle cx="335" cy="175" r="28" fill="url(#kg-sheen)" pointer-events="none"></circle>
+          <text x="335" y="235" text-anchor="middle" font-size="22" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">Backend</text>
+          <text x="335" y="256" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Vai trò</text>
+        </g>
+
+        <!-- Nexus (orange) -->
+        <g>
+          <circle cx="955" cy="180" r="30" fill="#F5A04C" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle><circle cx="955" cy="180" r="30" fill="url(#kg-sheen)" pointer-events="none"></circle>
+          <text x="955" y="242" text-anchor="middle" font-size="22" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">Nexus</text>
+          <text x="955" y="263" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Dự án</text>
+        </g>
+
+        <!-- Sprint 1 (purple) -->
+        <g>
+          <circle cx="1015" cy="415" r="28" fill="#A78BFA" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle><circle cx="1015" cy="415" r="28" fill="url(#kg-sheen)" pointer-events="none"></circle>
+          <text x="1015" y="475" text-anchor="middle" font-size="22" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">Sprint 1</text>
+          <text x="1015" y="496" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Sprint</text>
+        </g>
+
+        <!-- API Login (teal) -->
+        <g>
+          <title>API Login &amp; Token Generation (JWT)</title>
+          <circle cx="705" cy="600" r="28" fill="#2DD4BF" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle><circle cx="705" cy="600" r="28" fill="url(#kg-sheen)" pointer-events="none"></circle>
+          <text x="705" y="660" text-anchor="middle" font-size="22" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">API Login</text>
+          <text x="705" y="681" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">AU-1 · Task</text>
+          <text x="705" y="701" text-anchor="middle" font-size="12" font-weight="500" fill="#7C8CA6" font-family="'JetBrains Mono',monospace" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Sprint 1 · C6</text>
+        </g>
+
+        <!-- Slack Thread (gray + chat icon) -->
+        <g>
+          <circle cx="430" cy="585" r="26" fill="#94A3B8" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle>
+          <rect x="418" y="576" width="24" height="17" rx="5" fill="#0E1B33"></rect>
+          <path d="M423,593 l0,6 l6,-6 z" fill="#0E1B33"></path>
+          <circle cx="424" cy="584.5" r="1.6" fill="#94A3B8"></circle>
+          <circle cx="430" cy="584.5" r="1.6" fill="#94A3B8"></circle>
+          <circle cx="436" cy="584.5" r="1.6" fill="#94A3B8"></circle>
+          <text x="430" y="643" text-anchor="middle" font-size="21" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">Slack Thread</text>
+          <text x="430" y="663" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Nguồn hội thoại</text>
+        </g>
+
+        <!-- Project Plan.xlsx (gray + grid icon) -->
+        <g>
+          <circle cx="200" cy="545" r="26" fill="#94A3B8" stroke="rgba(255,255,255,0.22)" stroke-width="2" filter="url(#kg-shadow)"></circle>
+          <rect x="189" y="534" width="22" height="22" rx="4" fill="#0E1B33"></rect>
+          <path d="M189,541 h22 M189,548 h22 M196,534 v22 M204,534 v22" stroke="#3BA45B" stroke-width="1.3"></path>
+          <text x="200" y="603" text-anchor="middle" font-size="21" font-weight="700" fill="#E6ECF5" style="paint-order:stroke;stroke:#0E1B33;stroke-width:4px">Nexus Plan.xlsx</text>
+          <text x="200" y="623" text-anchor="middle" font-size="14" font-weight="500" fill="#93A4BD" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Nguồn tài liệu</text>
+        </g>
+
+        <!-- SơnBH (center, selected) -->
+        <g>
+          <circle cx="600" cy="350" r="70" fill="none" stroke="#5B9CF6" stroke-width="2" opacity="0.28" filter="url(#kg-glow)"></circle>
+          <circle cx="600" cy="350" r="59" fill="none" stroke="#5B9CF6" stroke-width="3" opacity="0.55"></circle>
+          <circle cx="600" cy="350" r="48" fill="#5B9CF6" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" filter="url(#kg-shadow)"></circle><circle cx="600" cy="350" r="48" fill="url(#kg-sheen)" pointer-events="none"></circle>
+          <circle cx="600" cy="350" r="39" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"></circle>
+          <text x="600" y="360" text-anchor="middle" font-size="27" font-weight="800" fill="#ffffff" letter-spacing="1">TM</text>
+          <text x="600" y="432" text-anchor="middle" font-size="26" font-weight="800" fill="#F1F6FF" style="paint-order:stroke;stroke:#0E1B33;stroke-width:5px">TEAM MEMBER</text>
+          <text x="600" y="455" text-anchor="middle" font-size="15" font-weight="500" fill="#A7C4EC" style="paint-order:stroke;stroke:#0E1B33;stroke-width:3px">Trang nhân sự</text>
+        </g>
+      </svg>
+
+      <!-- Legend -->
+      <sc-if value="{{ showLegend }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;left:22px;bottom:18px;display:flex;align-items:center;gap:18px;padding:9px 16px;border-radius:999px;background:rgba(6,14,28,0.72);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(4px);z-index:2">
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#5B9CF6"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Con người</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#F5A04C"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Dự án</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#A78BFA"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Sprint</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#2DD4BF"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Công việc</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:10px;height:10px;border-radius:2px;background:#4ADE80"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Facts</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#94A3B8"></span><span style="font-size:13px;font-weight:500;color:#C6D2E4">Nguồn</span></div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Node inspector panel -->
+    <div style="width:466px;flex:none;border-radius:22px;background:#0A1324;border:1px solid rgba(255,255,255,0.07);box-shadow:0 20px 50px -20px rgba(10,19,36,0.5);padding:26px 28px;display:flex;flex-direction:column;color:#E2E8F0">
+      <div style="font-size:12px;font-weight:600;letter-spacing:2.5px;color:#5E70902;color:#6B7C99;text-transform:uppercase">Trang đang chọn</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
+        <span style="width:13px;height:13px;border-radius:50%;background:#5B9CF6;box-shadow:0 0 0 4px rgba(91,156,246,0.2)"></span>
+        <h2 style="font-size:38px;font-weight:800;letter-spacing:-0.5px;color:#8EC0FF">Team Member<br></h2>
+      </div>
+      <div style="font-size:14px;font-weight:500;color:#8496AE;margin-top:4px">Trang nhân sự · Entity Page</div>
+
+      <div style="height:1px;background:rgba(255,255,255,0.08);margin:18px 0 6px"></div>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Vai trò</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">Backend</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Dự án</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">Nexus</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Sprint</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">Sprint 1</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Phụ trách</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">API Login</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Fact tham chiếu</span><span style="font-size:14px;font-weight:600;color:#7BE8A3;font-family:'JetBrains Mono',monospace">task_count</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:15px;color:#8496AE">Nguồn</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">Slack + Excel</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0"><span style="font-size:15px;color:#8496AE">Phạm vi</span><span style="font-size:15px;font-weight:600;color:#EAF0F8">Đã xác nhận</span></div>
+      </div>
+
+      <div style="font-size:12px;font-weight:600;letter-spacing:2px;color:#6B7C99;text-transform:uppercase;margin-top:20px">Liên kết</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+        <span style="font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;color:#F6B778;background:rgba(245,160,76,0.14);border:1px solid rgba(245,160,76,0.4)">Nexus</span>
+        <span style="font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;color:#C4B2FB;background:rgba(167,139,250,0.14);border:1px solid rgba(167,139,250,0.4)">Sprint 1</span>
+        <span style="font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;color:#6FE3D3;background:rgba(45,212,191,0.14);border:1px solid rgba(45,212,191,0.4)">API Login</span>
+        <span style="font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;color:#A9E0FB;background:rgba(125,211,252,0.14);border:1px solid rgba(125,211,252,0.4)">Backend</span>
+      </div>
+
+      <div style="font-size:12px;font-weight:600;letter-spacing:2px;color:#6B7C99;text-transform:uppercase;margin-top:20px">Nguồn sử dụng</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:11px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)">
+          <span style="width:22px;height:22px;border-radius:6px;background:#94A3B8;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0A1324">S</span>
+          <span style="font-size:15px;font-weight:600;color:#EAF0F8">Slack Thread</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:11px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)">
+          <span style="width:22px;height:22px;border-radius:6px;background:#3BA45B;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">X</span>
+          <span style="font-size:15px;font-weight:600;color:#EAF0F8">Nexus Plan.xlsx</span>
+          <span style="font-size:13px;font-weight:600;color:#8496AE;font-family:'JetBrains Mono',monospace;margin-left:auto">E6:E59</span>
+        </div>
+      </div>
+
+      <div style="margin-top:auto;padding-top:18px">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:rgba(74,222,128,0.13);border:1px solid rgba(74,222,128,0.4)">
+          <span style="width:22px;height:22px;border-radius:50%;background:#4ADE80;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#0A1324">✓</span>
+          <span style="font-size:16px;font-weight:700;color:#7BEBA0">Có thể truy ngược nguồn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conclusion strip -->
+  <div style="flex:none;height:74px;margin-top:20px;border-radius:16px;background:#0E1B33;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 14px 34px -18px rgba(14,27,51,0.5)">
+    <div style="display:flex;align-items:center;gap:16px;min-width:0">
+      <span style="width:4px;height:38px;border-radius:2px;background:#5B9CF6;flex:none"></span>
+      <span style="font-size:21px;font-weight:600;color:#EAF0F8;line-height:1.25">Tri thức được tập trung, tổ chức theo thực thể và kết nối bằng những quan hệ có ý nghĩa.</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;flex:none;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);margin-left:24px">
+      <span style="font-size:14px;font-weight:600;color:#8EC0FF;font-family:'JetBrains Mono',monospace">Typed Links → Derived Knowledge Graph</span>
+    </div>
+  </div>
+</div>
+
+<!-- order:3 --></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1920, &quot;height&quot;: 1080},
+  &quot;showExpansion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Graph&quot;},
+  &quot;showLegend&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Graph&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showExpansion: this.props.showExpansion ?? true,
+      showLegend: this.props.showLegend ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
