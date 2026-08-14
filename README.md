@@ -2,7 +2,7 @@
 
 Live view của deck trình bày Nexus Agent, host trên GitHub Pages.
 
-**→ https://hardy-work.github.io/nexus-agent-deck/**
+**→ https://mor-tungdv.github.io/nexus-agent-deck/**
 
 ## Repo này là gì
 
